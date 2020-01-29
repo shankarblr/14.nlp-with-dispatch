@@ -52,10 +52,10 @@ namespace Microsoft.BotBuilderSamples
         {
             switch (intent)
             {
-                case "l_HomeAutomation":
+                case "PrimaryBroker":
                     await ProcessHomeAutomationAsync(turnContext, recognizerResult.Properties["luisResult"] as LuisResult, cancellationToken);
                     break;
-                case "l_Weather":
+                case "Activity":
                     await ProcessWeatherAsync(turnContext, recognizerResult.Properties["luisResult"] as LuisResult, cancellationToken);
                     break;
                 case "q_sample-qna":
@@ -63,7 +63,6 @@ namespace Microsoft.BotBuilderSamples
                     break;
                 default:
                     _logger.LogInformation($"Dispatch unrecognized intent: {intent}.");
-                    await turnContext.SendActivityAsync(MessageFactory.Text($"Dispatch unrecognized intent: {intent}."), cancellationToken);
                     break;
             }
         }
